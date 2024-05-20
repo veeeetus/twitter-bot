@@ -1,5 +1,6 @@
 import tweepy, logging
 from keys import *
+from pogoda import getCurrentTemp
 
 # Konfiguracja tweepy oraz autoryzacja API
 client = tweepy.Client(bearer_token, api_key, api_secret, access_token, access_token_secret)
@@ -12,8 +13,9 @@ logging.basicConfig(filename="errors.log", encoding="utf-8", level=logging.DEBUG
 
 def tweet():
     try:
-        client.create_weet(text = "Hello")
+        client.create_tweet(text = "Hello")
     except:
         logger.warning("There was an error while posting the tweet")
 
-tweet()
+if __name__ == "__main__":
+    getCurrentTemp()
