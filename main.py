@@ -13,9 +13,22 @@ logging.basicConfig(filename="errors.log", encoding="utf-8", level=logging.DEBUG
 
 def tweet():
     try:
-        client.create_tweet(text = "Hello")
+        temp = client.create_tweet(text = "test2")
+        with open("tweety.txt", "a") as myfile:
+            myfile.write(temp.data["id"])
     except:
         logger.warning("There was an error while posting the tweet")
 
+def remove():
+    while True:
+            try:
+                post_id = int(input("Please provide the ID of the post you want to delete: "))
+                client.delete_tweet(id = post_id)
+                print("post deleted successfully")
+                return
+            except:
+                with open("tweety.txt", "r") as myfile:
+                    lista_id = myfile.read()
+                print("You provided the wrong ID. List of IDs: ",lista_id)
 if __name__ == "__main__":
-    getCurrentTemp()
+    remove()
