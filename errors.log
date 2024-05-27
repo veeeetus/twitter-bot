@@ -1,1 +1,24 @@
-05/21/2024 12:47:14 AM - __main__ - WARNING - There was an error while posting the tweet
+05/21/2024 12:47:14 AM - __main__ - WARNING - There was an error while posting the tweet05/27/2024 10:07:27 PM - __main__ - WARNING - Error while posting the tweet: 403 Forbidden
+You are not allowed to create a Tweet with duplicate content.
+05/27/2024 10:07:27 PM - __main__ - WARNING - Error while posting the tweet: 403 Forbidden
+You are not allowed to create a Tweet with duplicate content.
+05/27/2024 10:07:27 PM - __main__ - INFO - Tweet ID 1795185079230013640 written to file successfully.
+05/27/2024 10:07:27 PM - __main__ - INFO - Tweet ID 1795185079230013640 written to file successfully.
+05/27/2024 10:07:27 PM - __main__ - INFO - Tweet posted successfully: 1795185079230013640
+05/27/2024 10:07:27 PM - __main__ - INFO - Tweet posted successfully: 1795185079230013640
+05/27/2024 10:07:27 PM - __main__ - ERROR - Error while deleting the tweet: 429 Too Many Requests
+Too Many Requests
+05/27/2024 10:07:27 PM - __main__ - ERROR - Error while deleting the tweet: 429 Too Many Requests
+Too Many Requests
+05/27/2024 10:08:41 PM - __main__ - INFO - Tweet ID 1795185388681674959 written to file successfully.
+05/27/2024 10:08:41 PM - __main__ - INFO - Tweet ID 1795185388681674959 written to file successfully.
+05/27/2024 10:08:41 PM - __main__ - INFO - Tweet posted successfully: 1795185388681674959
+05/27/2024 10:08:41 PM - __main__ - INFO - Tweet posted successfully: 1795185388681674959
+05/27/2024 10:08:41 PM - __main__ - INFO - Tweet ID 1795185389675696317 written to file successfully.
+05/27/2024 10:08:41 PM - __main__ - INFO - Tweet ID 1795185389675696317 written to file successfully.
+05/27/2024 10:08:41 PM - __main__ - INFO - Tweet posted successfully: 1795185389675696317
+05/27/2024 10:08:41 PM - __main__ - INFO - Tweet posted successfully: 1795185389675696317
+05/27/2024 10:08:41 PM - __main__ - ERROR - Error while deleting the tweet: 429 Too Many Requests
+Too Many Requests
+05/27/2024 10:08:41 PM - __main__ - ERROR - Error while deleting the tweet: 429 Too Many Requests
+Too Many Requests
