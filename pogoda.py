@@ -23,7 +23,7 @@ def getCurrentTemp(KEY=KEY, URL=URL):
         # Extract relevant data from JSON object
         temp = response.json()["current"]["temp_c"]
 
-        print(f"It's currently {temp} C degrees in {city}")
+        return f"It's currently {temp} C degrees in {city}"
     else:
         logger.error("There was an error processing request for Wroclaw weather")
 
