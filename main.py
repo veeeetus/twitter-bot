@@ -1,5 +1,6 @@
 import tweepy
 import logging
+import logging.handlers
 import os
 from keys import *
 from pogoda import getCurrentTemp
@@ -9,15 +10,33 @@ client = tweepy.Client(bearer_token, api_key, api_secret, access_token, access_t
 auth = tweepy.OAuth1UserHandler(api_key, api_secret, access_token, access_token_secret)
 api = tweepy.API(auth)
 
-# Initialize logger
+# Logger configuration
 logger = logging.getLogger(__name__)
-logging.basicConfig(
+logger.setLevel(logging.DEBUG)  # Set the default logging level to DEBUG
+
+# File handler for logging to a file with rotation
+file_handler = logging.handlers.RotatingFileHandler(
     filename="errors.log",
-    encoding="utf-8",
-    level=logging.DEBUG,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    maxBytes=1024 * 1024 * 5,  # 5 MB
+    backupCount=5,
+    encoding="utf-8"
+)
+file_handler.setLevel(logging.DEBUG)
+file_formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     datefmt='%m/%d/%Y %I:%M:%S %p'
 )
+file_handler.setFormatter(file_formatter)
+
+# Stream handler for logging to the console
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+console_formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(console_formatter)
+
+# Add handlers to the logger
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
 
 def tweet(text="test"):
     """
