@@ -2,6 +2,7 @@ import tweepy
 import logging
 import logging.handlers
 import os
+import tempfile
 from keys import *
 from pogoda import getCurrentTemp
 
@@ -48,11 +49,25 @@ def tweet(text="test"):
     try:
         response = client.create_tweet(text=text)
         tweet_id = response.data["id"]
-        with open("tweety.txt", "a") as myfile:
-            myfile.write(f"{tweet_id}\n")
+        write_tweet_id_to_file(tweet_id)
         logger.info(f"Tweet posted successfully: {tweet_id}")
     except Exception as e:
         logger.warning(f"Error while posting the tweet: {e}")
+
+def write_tweet_id_to_file(tweet_id):
+    """
+    Write the tweet ID to the file atomically.
+    
+    Args:
+    tweet_id (int): The ID of the tweet to be written to the file.
+    """
+    try:
+        with tempfile.NamedTemporaryFile('w', delete=False, dir='.') as temp_file:
+            temp_file.write(f"{tweet_id}\n")
+        os.replace(temp_file.name, "tweety.txt")
+        logger.info(f"Tweet ID {tweet_id} written to file successfully.")
+    except Exception as e:
+        logger.error(f"Error writing tweet ID to file: {e}")
 
 def remove(tweet_id):
     """
@@ -75,10 +90,12 @@ def read_last_tweet_id():
     int: The ID of the last tweet.
     """
     try:
-        with open("tweety.txt", "r") as myfile:
-            tweet_ids = myfile.read().strip().split("\n")
-            if tweet_ids:
-                return int(tweet_ids[-1].strip())
+        if os.path.exists("tweety.txt"):
+            with open("tweety.txt", "r") as myfile:
+                tweet_ids = myfile.read().strip().split("\n")
+                if tweet_ids:
+                    return int(tweet_ids[-1].strip())
+        logger.info("No tweet IDs found in the file.")
     except Exception as e:
         logger.error(f"Error reading last tweet ID: {e}")
     return None
