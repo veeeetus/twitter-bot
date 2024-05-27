@@ -13,9 +13,9 @@ logging.basicConfig(filename="errors.log", encoding="utf-8", level=logging.DEBUG
 
 def tweet():
     try:
-        client.create_tweet(text = "Hello")
+        temp = client.create_tweet(text = "Hello")
     except:
         logger.warning("There was an error while posting the tweet")
 
 if __name__ == "__main__":
-    getCurrentTemp()
+    tweet()
